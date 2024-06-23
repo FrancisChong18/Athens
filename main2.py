@@ -9,7 +9,7 @@ import plotly.express as px
 import folium
 from streamlit_folium import folium_static
 
-
+st.set_page_config(layout="wide")
 
 def predict_image(pil_image):
     # Convert the PIL image to a NumPy array
@@ -723,7 +723,7 @@ if st.session_state.button2_clicked:
     st.markdown(summary_text)
 
 # Adding multiple empty lines using a loop
-for _ in range(15):
+for _ in range(10):
     st.sidebar.write("")
 
 st.sidebar.markdown("---")  # Horizontal line to separate the footer
