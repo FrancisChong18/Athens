@@ -9,7 +9,7 @@ import plotly.express as px
 import folium
 from streamlit_folium import folium_static
 
-
+st.set_page_config(layout='wide')
 
 def predict_image(pil_image):
     # Convert the PIL image to a NumPy array
