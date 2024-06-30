@@ -10,6 +10,7 @@ import folium
 from streamlit_folium import folium_static
 
 st.set_page_config(layout='wide')
+<<<<<<< HEAD
 
 # Function to load images
 def load_image(image_path):
@@ -22,6 +23,8 @@ images = {
     "Sample Image 3": "Validation_Post_Event_009.jpg"
 }
 
+=======
+>>>>>>> 09ad54422d20a68781ec2b31cef067d215bdea9e
 
 def predict_image(pil_image):
     # Convert the PIL image to a NumPy array
