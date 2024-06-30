@@ -9,6 +9,18 @@ import plotly.express as px
 import folium
 from streamlit_folium import folium_static
 
+st.set_page_config(layout='wide')
+
+# Function to load images
+def load_image(image_path):
+    return Image.open(image_path)
+
+# List of image paths
+images = {
+    "Sample Image 1": "Validation_Post_Event_006.jpg",
+    "Sample Image 2": "Validation_Post_Event_007.jpg",
+    "Sample Image 3": "Validation_Post_Event_009.jpg"
+}
 
 
 def predict_image(pil_image):
@@ -138,14 +150,25 @@ if st.sidebar.button("Disaster Planning  "):
 # Button 1 content
 if st.session_state.button1_clicked:
     st.title("Rapid Disaster Management 🚨")
-    uploaded_file = st.file_uploader("Upload a Post Cyclone Satellite Image", type=["jpg", "jpeg", "png"])
+    # uploaded_file = st.file_uploader("Upload a Post Cyclone Satellite Image", type=["jpg", "jpeg", "png"])
 
+    # if uploaded_file:
+    #     st.session_state.uploaded_file = uploaded_file
+
+    # Select box for choosing an image
+    uploaded_file = st.selectbox("Choose a Sample Validation Image", list(images.keys()))
+
+
+    # Load and display the selected image
     if uploaded_file:
         st.session_state.uploaded_file = uploaded_file
+        img_path = images[uploaded_file]
+        image = load_image(img_path)
+
 
     if st.session_state.uploaded_file:
         if st.button('Validate'):
-            image = Image.open(st.session_state.uploaded_file)
+            # image = Image.open(st.session_state.uploaded_file)
             with st.spinner('Predicting...'):
                 image2, a, b, c, d = predict_image(image)
 
@@ -723,7 +746,7 @@ if st.session_state.button2_clicked:
     st.markdown(summary_text)
 
 # Adding multiple empty lines using a loop
-for _ in range(10):
+for _ in range(15):
     st.sidebar.write("")
 
 st.sidebar.markdown("---")  # Horizontal line to separate the footer
